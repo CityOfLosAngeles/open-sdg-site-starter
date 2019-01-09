@@ -10,7 +10,7 @@
 # -- replace "OPEN-SDG-DATA-STARTER" with "my-awesome-data-repo"
 
 # Replace this title as needed.
-title: City of Los Angeles Indicators For The Sustainable Development Goals
+title: City of LA Indicators For The Sustainable Development Goals
 # Replace the baseurl with the name of this repository.
 baseurl: "/open-sdg-site-starter"
 url: ""
