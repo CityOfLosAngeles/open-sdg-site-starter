@@ -17,18 +17,18 @@ url: ""
 data_dir: data
 environment: staging
 # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-remotedatabaseurl: "https://connectingLA1.github.io/open-sdg-site-starter"
+remotedatabaseurl: "https://connectingLA1.github.io/open-sdg-data-starter"
 
 jekyll_get_data:
   - data: meta
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://connectingLA1.github.io/open-sdg-site-starter/meta/all.json'
+    json: 'https://connectingLA1.github.io/open-sdg-data-starter/meta/all.json'
   - data: headlines
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://connectingLA1.github.io/open-sdg-site-starter/headline/all.json'
+    json: 'https://connectingLA1.github.io/open-sdg-data-starter/headline/all.json'
   - data: schema
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://connectingLA1.github.io/open-sdg-site-starter/meta/schema.json'
+    json: 'https://connectingLA1.github.io/open-sdg-data-starter/meta/schema.json'
   - data: translations
     json: 'https://open-sdg.github.io/sdg-translations/translations.json'
 
@@ -46,7 +46,7 @@ email_contacts:
 
 # Github Repo for Data
 # Replace this value as needed.
-repo_name: open-sdg-site-starter
+repo_name: open-sdg-data-starter
 branch: develop
 # Replace this value as needed.
 org_name: connectingLA1
