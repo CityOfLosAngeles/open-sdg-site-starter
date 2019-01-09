@@ -60,7 +60,7 @@ exclude: [vendor, scripts, remotedata]
 # International Support
 # Eg name: Australia and adjective: Australian
 country:
-  name: Los Angeles
+  name: City of Los Angeles
   adjective: Angeleno
 
 # Pages
