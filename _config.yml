@@ -49,7 +49,7 @@ email_contacts:
 repo_name: open-sdg-data-starter
 branch: develop
 # Replace this value as needed.
-org_name: connectingLA1
+org_name: dawncomer
 
 # Build settings
 markdown: kramdown
