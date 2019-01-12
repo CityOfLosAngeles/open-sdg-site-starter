@@ -2,9 +2,7 @@
   <li><a href="{{ site.baseurl }}{{ baseurl_folder }}/">{{ t.general.home }}</a></li>
   {% if goal_href %}
       <li><a href="{{ goal_href }}" title="{{ goal_title }}">{{ t.general.goal }} {{ goal_number }}</a></li>
-      {% assign indicator_parts = page.indicator | split: "." %}
-      {% assign target_number = indicator_parts[0] | append: "." | append: indicator_parts[1] %}
-      <li>{{ t.general.target }} {{ target_number }}</li>
+      <li>{{ t.general.target }} {{ meta.target_id }}</li>
       <li class="active">{{ t.general.indicator }} {{ page.indicator }}</li>
   {% else %}
       <li class="active">{{ t.general.goal }} {{ goal_number }}</li>
