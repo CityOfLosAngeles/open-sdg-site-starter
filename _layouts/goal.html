@@ -2,7 +2,6 @@
 {% include header.html %}
 {% assign goal_number = page.sdg_goal %}
 {% assign translated_goal = t.global_goals[goal_number] %}
-{% include variables/targets.liquid goal_number=goal_number %}
 
 <div class="heading goal-{{page.sdg_goal}}">
   <div class="container">
@@ -34,20 +33,31 @@
     </div>
   </div>
 
-  {% assign counter = 0 %}
-  {% for target_number in target_numbers %}
-
+  {% assign goal_indicators = site.data.meta | where: 'sdg_goal', goal_number | sort: 'indicator_sort_order' | group_by: 'target_id' %}
+  {% for group in goal_indicators %}
+    {% assign translated_target = t.global_targets[group.name] %}
     <div class="indicator-cards target col-md-6">
       <span>
         <label class="hidden-md hidden-lg">{{ t.general.target }}</label>
-        {{ target_number }}
+        {{ group.name }}
       </span>
-      {{ target_titles[counter] }}
+      {{ translated_target.title }}
     </div>
     <div class="indicator-cards col-md-6 row no-gutters">
-    {% for indicator in target_indicators[counter] %}
+    {% for indicator in group.items %}
 
-      {% include variables/indicator_status.liquid reporting_status=indicator.reporting_status %}
+      {% if indicator.reporting_status == 'notstarted' %}
+        {% assign status_desc = t.status.exploring_data_sources %}
+        {% assign status_css = 'danger' %}
+      {% endif %}
+      {% if indicator.reporting_status == 'inprogress' %}
+        {% assign status_desc = t.status.statistics_in_progress %}
+        {% assign status_css = 'warning' %}
+      {% endif %}
+      {% if indicator.reporting_status == 'complete' %}
+        {% assign status_desc = t.status.reported_online %}
+        {% assign status_css = 'success' %}
+      {% endif %}
 
       {% assign translated_indicator = t.global_indicators[indicator.indicator] %}
 
@@ -62,7 +72,6 @@
       </div>
     {% endfor %}
     </div>
-    {% assign counter = counter | plus: 1 %}
   {%- endfor -%}
 </div>
 
