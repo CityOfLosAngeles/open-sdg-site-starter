@@ -1,0 +1,28 @@
+{%- comment -%}
+
+This file sets up two variables:
+
+status_desc
+  This contains a human-readable string describing the indicator's status
+
+status_css
+  This contains a CSS class describing the indicator's status
+
+This include expects one parameter: reporting_status, which can be one of:
+  * notstarted
+  * inprogress
+  * complete
+
+{%- endcomment -%}
+{% if include.reporting_status == 'notstarted' %}
+  {% assign status_desc = t.status.exploring_data_sources %}
+  {% assign status_css = 'danger' %}
+{% endif %}
+{% if include.reporting_status == 'inprogress' %}
+  {% assign status_desc = t.status.statistics_in_progress %}
+  {% assign status_css = 'warning' %}
+{% endif %}
+{% if include.reporting_status == 'complete' %}
+  {% assign status_desc = t.status.reported_online %}
+  {% assign status_css = 'success' %}
+{% endif %}

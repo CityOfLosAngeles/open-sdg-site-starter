@@ -1,0 +1,39 @@
+{%- comment -%}
+
+This file sets up three corresponding arrays:
+
+target_titles
+  This contains an array of translated target titles.
+
+target_numbers
+  This contains an array of target numbers (eg, 1.1, 1.2, etc.)
+
+target_indicators
+  This contains an array of arrays of indicators contained in the target.
+
+This include expects one parameter: goal_number
+
+{%- endcomment -%}
+{%- assign target_titles = "" | split: ',' -%}
+{%- assign target_numbers = "" | split: ',' -%}
+{%- assign target_indicators = "" | split: ',' -%}
+{% assign goal_indicators = site.data.meta | where: 'sdg_goal', include.goal_number | sort: 'indicator_sort_order' %}
+{%- for target in t.global_targets -%}
+  {%- assign target_number = target[0] -%}
+  {%- assign target_title = target[1].title -%}
+  {%- assign target_parts = target_number | split: '.' -%}
+  {%- assign target_goal = target_parts[0] -%}
+  {%- if target_goal == include.goal_number -%}
+    {%- assign indicators_in_target = "" | split: ',' -%}
+    {%- for indicator in goal_indicators -%}
+      {%- assign id_parts = indicator.indicator | split: "." -%}
+      {%- assign indicator_target = id_parts[0] | append: '.' | append: id_parts[1] -%}
+      {%- if indicator_target == target_number -%}
+        {%- assign indicators_in_target = indicators_in_target | push: indicator -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- assign target_titles = target_titles | push: target_title -%}
+    {%- assign target_numbers = target_numbers | push: target_number -%}
+    {%- assign target_indicators = target_indicators | push: indicators_in_target -%}
+  {%- endif -%}
+{%- endfor -%}
