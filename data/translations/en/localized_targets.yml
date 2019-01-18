@@ -1,11 +1,11 @@
 '1.1':
   title: By 2030, eradicate extreme poverty for all people everywhere, currently measured
-    as people living on less than $1.25 a day
+    as people living on less than $33.00 per day
 '1.2':
   title: By 2030, reduce at least by half the proportion of men, women and children
     of all ages living in poverty in all its dimensions according to national definitions
 '1.3':
-  title: Implement nationally appropriate social protection systems and measures for
+  title: Implement locally appropriate social protection systems and measures for
     all, including floors, and by 2030 achieve substantial coverage of the poor and
     the vulnerable
 '1.4':
@@ -19,16 +19,17 @@
     and other economic, social and environmental shocks and disasters
 1.a:
   title: Ensure significant mobilization of resources from a variety of sources, including
-    through enhanced development cooperation, in order to provide adequate and predictable
-    means for developing countries, in particular least developed countries, to implement
-    programmes and policies to end poverty in all its dimensions
+    through enhanced development cooperation, to implement programs and policies to end poverty 
+    in all its dimensions according to local standards
 1.b:
-  title: Create sound policy frameworks at the national, regional and international
+  title: Create sound policy frameworks at the local, regional and international
     levels, based on pro-poor and gender-sensitive development strategies, to support
     accelerated investment in poverty eradication actions
 '10.1':
   title: By 2030, progressively achieve and sustain income growth of the bottom 40
-    per cent of the population at a rate higher than the national average
+    per cent of the population at a rate higher than the national average to significantly
+    reduce the wage gap, paying special attention to age, sex, disability, race, ethnicity, 
+    origin, religion or economic or other status
 '10.2':
   title: By 2030, empower and promote the social, economic and political inclusion
     of all, irrespective of age, sex, disability, race, ethnicity, origin, religion
@@ -44,13 +45,13 @@
   title: Improve the regulation and monitoring of global financial markets and institutions
     and strengthen the implementation of such regulations
 '10.6':
-  title: Ensure enhanced representation and voice for developing countries in decision-making
-    in global international economic and financial institutions in order to deliver
-    more effective, credible, accountable and legitimate institutions
+  title: Ensure enhanced representation and voice for underrepresented populations and
+    communities in decision-making in global international economic and financial institutions 
+    in order to deliver more effective, credible, accountable and legitimate institutions
 '10.7':
   title: Facilitate orderly, safe, regular and responsible migration and mobility
     of people, including through the implementation of planned and well-managed migration
-    policies
+    policies taking into consideration the needs of refugees and the undocumented
 10.a:
   title: Implement the principle of special and differential treatment for developing
     countries, in particular least developed countries, in accordance with World Trade
@@ -65,7 +66,7 @@
     remittances and eliminate remittance corridors with costs higher than 5 per cent
 '11.1':
   title: By 2030, ensure access for all to adequate, safe and affordable housing and
-    basic services and upgrade slums
+    basic services
 '11.2':
   title: By 2030, provide access to safe, affordable, accessible and sustainable transport
     systems for all, improving road safety, notably by expanding public transport,
@@ -76,13 +77,13 @@
     participatory, integrated and sustainable human settlement planning and management
     in all countries
 '11.4':
-  title: Strengthen efforts to protect and safeguard the world’s cultural and natural
+  title: Strengthen efforts to protect and safeguard the Los Angeles' cultural and natural
     heritage
 '11.5':
   title: By 2030, significantly reduce the number of deaths and the number of people
-    affected and substantially decrease the direct economic losses relative to global
-    gross domestic product caused by disasters, including water-related disasters,
-    with a focus on protecting the poor and people in vulnerable situations
+    affected and substantially decrease the direct economic losses caused by disasters, 
+    including water-related disasters, with a focus on protecting the poor and people in 
+    vulnerable situations
 '11.6':
   title: By 2030, reduce the adverse per capita environmental impact of cities, including
     by paying special attention to air quality and municipal and other waste management
@@ -92,7 +93,7 @@
     with disabilities
 11.a:
   title: Support positive economic, social and environmental links between urban,
-    peri-urban and rural areas by strengthening national and regional development
+    peri-urban and rural areas by strengthening local and regional development
     planning
 11.b:
   title: By 2020, substantially increase the number of cities and human settlements
@@ -101,57 +102,58 @@
     and develop and implement, in line with the Sendai Framework for Disaster Risk
     Reduction 2015–2030, holistic disaster risk management at all levels
 11.c:
-  title: Support least developed countries, including through financial and technical
-    assistance, in building sustainable and resilient buildings utilizing local materials
+  title: Support all communities, inclusive of underserved and unserved communities through 
+    financial and technical assistance, in building sustainable and resilient buildings 
+    utilizing local materials
 '12.1':
-  title: Implement the 10‐Year Framework of Programmes on Sustainable Consumption
-    and Production Patterns, all countries taking action, with developed countries
-    taking the lead, taking into account the development and capabilities of developing
-    countries
+  title: Localize the 10‐Year Framework of Programmes on Sustainable Consumption
+    and Production Patterns, with a focus on creating new job/market opportunities and
+    contributing to poverty eradication and social development and environmental 
+    sustainability at the City level through increased stakeholder engagement
 '12.2':
   title: By 2030, achieve the sustainable management and efficient use of natural
     resources
 '12.3':
-  title: By 2030, halve per capita global food waste at the retail and consumer levels
+  title: By 2030, halve per capita local food waste at the retail and consumer levels
     and reduce food losses along production and supply chains, including post-harvest
     losses
 '12.4':
   title: By 2020, achieve the environmentally sound management of chemicals and all
-    wastes throughout their life cycle, in accordance with agreed international frameworks,
-    and significantly reduce their release to air, water and soil in order to minimize
-    their adverse impacts on human health and the environment
+    wastes throughout their life cycle, in accordance with agreed national and local
+    standards, and significantly reduce their release to air, water and soil in order 
+    to minimize their adverse impacts on human health and the environment
 '12.5':
   title: By 2030, substantially reduce waste generation through prevention, reduction,
     recycling and reuse
 '12.6':
-  title: Encourage companies, especially large and transnational companies, to adopt
+  title: Encourage companies, located and operating in Los Angeles, to adopt
     sustainable practices and to integrate sustainability information into their reporting
     cycle
 '12.7':
   title: Promote public procurement practices that are sustainable, in accordance
-    with national policies and priorities
+    with national, state and city-wide policies and priorities
 '12.8':
   title: By 2030, ensure that people everywhere have the relevant information and
     awareness for sustainable development and lifestyles in harmony with nature
 12.a:
-  title: Support developing countries to strengthen their scientific and technological
+  title: Support all entities in Los Angeles to strengthen their scientific and technological
     capacity to move towards more sustainable patterns of consumption and production
 12.b:
   title: Develop and implement tools to monitor sustainable development impacts for
     sustainable tourism that creates jobs and promotes local culture and products
 12.c:
   title: Rationalize inefficient fossil-fuel subsidies that encourage wasteful consumption
-    by removing market distortions, in accordance with national circumstances, including
+    by removing market distortions, in accordance with local circumstances, including
     by restructuring taxation and phasing out those harmful subsidies, where they
     exist, to reflect their environmental impacts, taking fully into account the specific
-    needs and conditions of developing countries and minimizing the possible adverse
-    impacts on their development in a manner that protects the poor and the affected
-    communities
+    needs and conditions of communities within Los Angeles and minimizing the possible adverse
+    impacts on their development in a manner that protects the poor and otherwise affected
+    populations
 '13.1':
   title: Strengthen resilience and adaptive capacity to climate-related hazards and
-    natural disasters in all countries
+    natural disasters in all community plan areas
 '13.2':
-  title: Integrate climate change measures into national policies, strategies and
+  title: Integrate climate change measures into all City policies, strategies and
     planning
 '13.3':
   title: Improve education, awareness-raising and human and institutional capacity
@@ -165,8 +167,8 @@
     as soon as possible
 13.b:
   title: Promote mechanisms for raising capacity for effective climate change-related
-    planning and management in least developed countries and small island developing
-    States, including focusing on women, youth and local and marginalized communities
+    planning and management, including focusing on women, youth and local and marginalized 
+    communities
 '14.1':
   title: By 2025, prevent and significantly reduce marine pollution of all kinds,
     in particular from land-based activities, including marine debris and nutrient
