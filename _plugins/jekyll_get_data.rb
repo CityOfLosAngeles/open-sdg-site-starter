@@ -1,6 +1,6 @@
 require 'json'
-require 'hash-joiner'
 require 'open-uri'
+require 'deep_merge'
 
 module Jekyll_Get_Data
   class Generator < Jekyll::Generator
@@ -24,7 +24,7 @@ module Jekyll_Get_Data
           source = JSON.load(open(d['json']))
 
           if target
-            HashJoiner.deep_merge target, source
+            target.deep_merge(source)
           else
             site.data[d['data']] = source
           end
