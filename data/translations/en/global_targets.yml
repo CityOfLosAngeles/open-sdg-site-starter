@@ -41,9 +41,6 @@
 '10.4':
   title: Adopt policies, especially fiscal, wage and social protection policies, and
     progressively achieve greater equality
-'10.5':
-  title: Improve the regulation and monitoring of global financial markets and institutions
-    and strengthen the implementation of such regulations
 '10.6':
   title: Ensure enhanced representation and voice for underrepresented populations and
     communities in decision-making in global international economic and financial institutions
@@ -52,18 +49,6 @@
   title: Facilitate orderly, safe, regular and responsible migration and mobility
     of people, including through the implementation of planned and well-managed migration
     policies taking into consideration the needs of refugees and the undocumented
-10.a:
-  title: Implement the principle of special and differential treatment for developing
-    countries, in particular least developed countries, in accordance with World Trade
-    Organization agreements
-10.b:
-  title: Encourage official development assistance and financial flows, including
-    foreign direct investment, to States where the need is greatest, in particular
-    least developed countries, African countries, small island developing States and
-    landlocked developing countries, in accordance with their national plans and programmes
-10.c:
-  title: By 2030, reduce to less than 3 per cent the transaction costs of migrant
-    remittances and eliminate remittance corridors with costs higher than 5 per cent
 '11.1':
   title: By 2030, ensure access for all to adequate, safe and affordable housing and
     basic services
@@ -158,13 +143,6 @@
 '13.3':
   title: Improve education, awareness-raising and human and institutional capacity
     on climate change mitigation, adaptation, impact reduction and early warning
-13.a:
-  title: Implement the commitment undertaken by developed-country parties to the United
-    Nations Framework Convention on Climate Change to a goal of mobilizing jointly
-    $100 billion annually by 2020 from all sources to address the needs of developing
-    countries in the context of meaningful mitigation actions and transparency on
-    implementation and fully operationalize the Green Climate Fund through its capitalization
-    as soon as possible
 13.b:
   title: Promote mechanisms for raising capacity for effective climate change-related
     planning and management, including focusing on women, youth and local and marginalized
@@ -191,13 +169,6 @@
   title: By 2020, conserve at least 10 per cent of coastal and marine areas, consistent
     with national and local law and based on the best available scientific
     information
-'14.6':
-  title: By 2020, prohibit certain forms of fisheries subsidies which contribute to
-    overcapacity and overfishing, eliminate subsidies that contribute to illegal,
-    unreported and unregulated fishing and refrain from introducing new such subsidies,
-    recognizing that appropriate and effective special and differential treatment
-    for developing and least developed countries should be an integral part of the
-    World Trade Organization fisheries subsidies negotiation
 '14.7':
   title: By 2030, increase the economic benefits to community plan areas along the
     coast from the sustainable use of marine resources, including
@@ -336,21 +307,9 @@
   title: By 2030, build on existing initiatives to develop measurements of progress
     on sustainable development that complement gross domestic product, and support
     statistical capacity-building in locally and internationally
-'17.2':
-  title: Developed countries to implement fully their official development assistance
-    commitments, including the commitment by many developed countries to achieve the
-    target of 0.7 per cent of gross national income for official development assistance
-    (ODA/GNI) to developing countries and 0.15 to 0.20 per cent of ODA/GNI to least
-    developed countries; ODA providers are encouraged to consider setting a target
-    to provide at least 0.20 per cent of ODA/GNI to least developed countries
 '17.3':
   title: Promote resource mobilization from multiple resources to reduce local barriers
     that complicate the outflow of remittances to developing countries
-'17.4':
-  title: Assist developing countries in attaining long-term debt sustainability through
-    coordinated policies aimed at fostering debt financing, debt relief and debt restructuring,
-    as appropriate, and address the external debt of highly indebted poor countries
-    to reduce debt distress
 '17.5':
   title: Using LA's public-private networks, assist global SDG partners in developing countries
     to adopt and implement investment promotion regimes focused on their communities
@@ -391,26 +350,10 @@
     agricultural practices that help maintain ecosystems, that strengthen capacity for 
     adaptation to climate change, extreme weather, drought, flooding and other disasters 
     and that progressively improve land and soil quality
-'2.5':
-  title: By 2020, maintain the genetic diversity of seeds, cultivated plants and farmed
-    and domesticated animals and their related wild species, including through soundly
-    managed and diversified seed and plant banks at the national, regional and international
-    levels, and promote access to and fair and equitable sharing of benefits arising
-    from the utilization of genetic resources and associated traditional knowledge,
-    as internationally agreed
 2.a:
   title: Increase investment, including through enhanced international and domestic 
     cooperation, in rural infrastructure, agricultural research and extension services, 
     technology development in order to enhance agricultural productive capacity 
-2.b:
-  title: Correct and prevent trade restrictions and distortions in world agricultural
-    markets, including through the parallel elimination of all forms of agricultural
-    export subsidies and all export measures with equivalent effect, in accordance
-    with the mandate of the Doha Development Round
-2.c:
-  title: Adopt measures to ensure the proper functioning of food commodity markets
-    and their derivatives and facilitate timely access to market information, including
-    on food reserves, in order to help limit extreme food price volatility
 '3.1':
   title: By 2030, reduce the global maternal mortality ratio to less than 5 per 100,000
     live births for every race and ethnic group
@@ -490,10 +433,6 @@
   title: By 2020, substantially expand the number of scholarships available for enrollment 
     in higher education, including vocational training and information and communications 
     technology, technical, engineering and scientific programmes within the City of Los Angeles
-4.c:
-  title: By 2030, substantially increase the supply of qualified teachers, including
-    through international cooperation for teacher training in developing countries,
-    especially least developed countries and small island developing States
 '5.1':
   title: End all forms of discrimination against all women and girls everywhere
 '5.2':
@@ -608,10 +547,6 @@
 '8.9':
   title: By 2030, devise and implement policies to promote sustainable tourism that
     creates jobs and promotes local culture and products
-8.a:
-  title: Increase Aid for Trade support for developing countries, in particular least
-    developed countries, including through the Enhanced Integrated Framework for Trade-related
-    Technical Assistance to Least Developed Countries
 8.b:
   title: By 2020, develop and operationalize a local strategy for youth employment
     and implement the Global Jobs Pact of the International Labour Organization
