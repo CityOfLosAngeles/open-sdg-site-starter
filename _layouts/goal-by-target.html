@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div id="main-content" class="container goal-indicators goal-{{page.sdg_goal}}">
+<div id="main-content" class="container goal-indicators goal-{{page.sdg_goal}} goal-by-target">
 
   {{ content }}
   {% include components/breadcrumb.html %}
@@ -47,34 +47,52 @@
     </div>
     <div class="indicator-cards col-md-6 row no-gutters">
     {% for indicator in group.items %}
+      {%- assign translated_indicator = t.global_indicators[indicator.indicator] -%}
 
+      {% assign status_css = indicator.reporting_status | slugify %}
+      {% if indicator.reporting_status == 'notapplicable' %}
+        {% assign status_desc = t.status.not_applicable %}
+      {% endif %}
       {% if indicator.reporting_status == 'notstarted' %}
         {% assign status_desc = t.status.exploring_data_sources %}
-        {% assign status_css = 'danger' %}
       {% endif %}
       {% if indicator.reporting_status == 'inprogress' %}
         {% assign status_desc = t.status.statistics_in_progress %}
-        {% assign status_css = 'warning' %}
       {% endif %}
       {% if indicator.reporting_status == 'complete' %}
         {% assign status_desc = t.status.reported_online %}
-        {% assign status_css = 'success' %}
       {% endif %}
+      {% assign tag_classes = "" | split: "," %}
+      {% if indicator.tags %}
+        {% for tag in indicator.tags %}
+          {% assign tag_slug = "indicator-" | append: tag | slugify %}
+          {% assign tag_classes = tag_classes | push: tag_slug %}
+        {% endfor %}
+      {% endif %}
+      {% assign tag_classes = tag_classes | join: " " %}
 
-      {% assign translated_indicator = t.global_indicators[indicator.indicator] %}
-
-      <div class="col-md-12">
+      <div class="col-md-12 {{ tag_classes }}">
         <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ indicator.indicator | slugify }}">
           <span>
-            <label class="hidden-md hidden-lg">{{ t.general.indicator }}</label>
             {{ indicator.indicator }}
-            <span class="status {{ status_css }}">{{ status_desc }}</span>
-          </span> {{ translated_indicator.title }}
+            <span class="status {{ status_css }}">
+              {{ status_desc }}
+            </span>
+          </span>
+          {{ translated_indicator.title }}
+          {% if indicator.tags %}
+            <ul class="tags">
+            {% for tag in indicator.tags %}
+              {% assign tag_class = tag | slugify %}
+              <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
         </a>
       </div>
     {% endfor %}
     </div>
-  {%- endfor -%}
+  {% endfor %}
 </div>
 
 {% include footer.html %}
