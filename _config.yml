@@ -29,8 +29,10 @@ jekyll_get_json:
   - data: schema
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
     json: 'https://dawncomer.github.io/open-sdg-data-starter/meta/schema.json'
+  - data: reporting
+    json: 'https://dawncomer.github.io/open-sdg-data-starter/stats/reporting.json'
   - data: translations
-    json: 'https://open-sdg.github.io/sdg-translations/translations-0.3.2.json'
+    json: 'https://open-sdg.github.io/sdg-translations/translations-0.5.0.json'
 
 analytics:
   ga_prod: ''
@@ -111,7 +113,7 @@ plugins:
   - jekyll-open-sdg-plugins
 
 # Tell the Remote Theme plugin to use the Open SDG platform (Jekyll theme).
-remote_theme: open-sdg/open-sdg@0.3.1
+remote_theme: open-sdg/open-sdg@0.5.3
 
 # Apply any custom CSS.
 custom_css:
