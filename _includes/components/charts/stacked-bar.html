@@ -1,0 +1,20 @@
+<canvas></canvas>
+<script>
+// Replace the opensdg.chartConfigAlter function for this graph type.
+opensdg.chartConfigAlter = function(config) {
+  var overrides = {
+    // Force the 'bar' display.
+    type: 'bar',
+    options: {
+      scales: {
+        // Stack the axes.
+        xAxes: [{ stacked: true }],
+        yAxes: [{ stacked: true }]
+      }
+    }
+  };
+  // Add these overrides onto the normal config, and return it.
+  $.extend(true, config, overrides);
+  return config;
+};
+</script>
