@@ -91,7 +91,7 @@ menu:
   - path: /faq
     translation_key: menu.faq
 
-# Configure the text (or "translation key") to be used on the 
+# Configure the text (or "translation key") to be used on the
 # non-global metadata tab.
 non_global_metadata: Local Metadata
 
@@ -117,7 +117,7 @@ plugins:
   - jekyll-open-sdg-plugins
 
 # Tell the Remote Theme plugin to use the Open SDG platform (Jekyll theme).
-remote_theme: open-sdg/open-sdg@0.5.3
+remote_theme: brockfanning/open-sdg@chartjs-component-cleanup
 
 # Apply any custom CSS.
 custom_css:
