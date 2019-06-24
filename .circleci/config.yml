@@ -79,7 +79,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.1
-    working_directory: ~/repo
+    #
     steps:
       - checkout
       - restore_cache:
@@ -94,6 +94,13 @@ jobs:
       - run:
           name: Build the Jekyll site
           command: bundle exec jekyll build
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - _site
+      - run:
+          name: PWD
+          command: pwd
       # test below first
       # - run:
       #     name: Build the Jekyll site
@@ -103,12 +110,17 @@ jobs:
       - image: circleci/python:2.7-jessie
     working_directory: ~/repo
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: PWD
+          command: pwd
       - run:
           name: Install awscli
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync ~/_site/ s3://sdgdata.lamayor --delete
+          command: aws s3 sync /tmp/workspace/_site/ s3://sdgdata.lamayor --delete
 workflows:
   version: 2
   test:
