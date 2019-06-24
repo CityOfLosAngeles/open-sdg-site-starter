@@ -98,7 +98,7 @@ jobs:
           name: PWD
           command: pwd
       - persist_to_workspace:
-          root: ~/
+          root: ~/project
           paths:
             - _site
       # test below first
@@ -108,7 +108,6 @@ jobs:
   deploy_s3:
     docker:
       - image: circleci/python:2.7-jessie
-    working_directory: ~/repo
     steps:
       - attach_workspace:
           at: /tmp/workspace
