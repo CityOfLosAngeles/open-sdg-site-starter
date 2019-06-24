@@ -94,13 +94,13 @@ jobs:
       - run:
           name: Build the Jekyll site
           command: bundle exec jekyll build
-      - persist_to_workspace:
-          root: workspace
-          paths:
-            - _site
       - run:
           name: PWD
           command: pwd
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - _site
       # test below first
       # - run:
       #     name: Build the Jekyll site
