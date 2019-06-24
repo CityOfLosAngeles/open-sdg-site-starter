@@ -120,6 +120,7 @@ workflows:
                 - master
                 - develop
                 - gh-pages
+                - aws
   build-deploy:
     jobs:
       - build
