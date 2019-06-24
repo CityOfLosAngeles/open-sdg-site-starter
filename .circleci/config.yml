@@ -91,9 +91,14 @@ jobs:
           key: test-dependencies-{{ checksum "Gemfile" }}
           paths:
             - vendor/bundle
+      # build for prod
       - run:
           name: Build the Jekyll site
-          command: bundle exec jekyll build
+          command: bundle exec jekyll build --config _config_prod.yml
+      # build with test settings below
+      # - run:
+      #     name: Build the Jekyll site
+      #     command: bundle exec jekyll build
       - run:
           name: PWD
           command: pwd
@@ -101,10 +106,6 @@ jobs:
           root: ~/project
           paths:
             - _site
-      # test below first
-      # - run:
-      #     name: Build the Jekyll site
-      #     command: bundle exec jekyll build --config _config_prod.yml
   deploy_s3:
     docker:
       - image: circleci/python:2.7-jessie
