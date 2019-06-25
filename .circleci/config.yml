@@ -92,13 +92,9 @@ jobs:
           paths:
             - vendor/bundle
       # build for prod
-      # - run:
-      #     name: Build the Jekyll site
-      #     command: bundle exec jekyll build --config _config_prod.yml
-      # build with test settings below
       - run:
           name: Build the Jekyll site
-          command: bundle exec jekyll build
+          command: bundle exec jekyll build --config _config.yml,_config_prod.yml
       - run:
           name: PWD
           command: pwd
