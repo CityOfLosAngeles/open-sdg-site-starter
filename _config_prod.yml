@@ -3,8 +3,6 @@
 # This file contains only the differences from the _config.yml file that are
 # necessary for a production version of this site.
 
-# Replace this title as needed.
-# Replace the baseurl with the name of this repository.
 baseurl: ""
 environment: production
 
