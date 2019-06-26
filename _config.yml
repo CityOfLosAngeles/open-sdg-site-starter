@@ -17,20 +17,20 @@ url: ""
 data_dir: data
 environment: staging
 # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-remotedatabaseurl: "https://dawncomer.github.io/open-sdg-data-starter"
+remotedatabaseurl: "http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com"
 
 jekyll_get_json:
   - data: meta
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://dawncomer.github.io/open-sdg-data-starter/meta/all.json'
+    json: 'http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com/meta/all.json'
   - data: headlines
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://dawncomer.github.io/open-sdg-data-starter/headline/all.json'
+    json: 'http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com/headline/all.json'
   - data: schema
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://dawncomer.github.io/open-sdg-data-starter/meta/schema.json'
+    json: 'http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com/meta/schema.json'
   - data: reporting
-    json: 'https://dawncomer.github.io/open-sdg-data-starter/stats/reporting.json'
+    json: 'http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com/stats/reporting.json'
   - data: translations
     json: 'https://open-sdg.github.io/sdg-translations/translations-0.5.1.json'
 
@@ -91,7 +91,7 @@ menu:
   - path: /faq
     translation_key: menu.faq
 
-# Configure the text (or "translation key") to be used on the 
+# Configure the text (or "translation key") to be used on the
 # non-global metadata tab.
 non_global_metadata: Local Metadata
 
