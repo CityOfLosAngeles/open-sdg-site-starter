@@ -91,7 +91,7 @@ menu:
   - path: /faq
     translation_key: menu.faq
 
-# Configure the text (or "translation key") to be used on the 
+# Configure the text (or "translation key") to be used on the
 # non-global metadata tab.
 non_global_metadata: Local Metadata
 

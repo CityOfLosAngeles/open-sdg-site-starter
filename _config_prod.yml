@@ -11,13 +11,13 @@ environment: production
 #  ga_prod: 'paste UA code here'
 
 # Uncomment and configure to point to a different data source for production.
-#remotedatabaseurl: "https://dawncomer.github.io/open-sdg-data-starter"
-#jekyll_get_json:
-#  - data: meta
-#    json: 'https://dawncomer.github.io/open-sdg-data-starter/meta/all.json'
-#  - data: headlines
-#    json: 'https://dawncomer.github.io/open-sdg-data-starter/headline/all.json'
-#  - data: schema
-#    json: 'https://dawncomer.github.io/open-sdg-data-starter/meta/schema.json'
-#  - data: reporting
-#    json: 'https://dawncomer.github.io/open-sdg-data-starter/stats/reporting.json'
+remotedatabaseurl: "http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com"
+jekyll_get_json:
+ - data: meta
+   json: 'http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com/meta/all.json'
+ - data: headlines
+   json: 'http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com/headline/all.json'
+ - data: schema
+   json: 'http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com/meta/schema.json'
+ - data: reporting
+   json: 'http://sdgdatabase.lamayor.org.s3-website-us-west-2.amazonaws.com/stats/reporting.json'
