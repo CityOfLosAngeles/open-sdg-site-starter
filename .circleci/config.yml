@@ -76,6 +76,47 @@ jobs:
       - run:
           name: Deploy to Github
           command: bash scripts/deploy/circleci/deploy_staging.sh
+  build:
+    docker:
+      - image: circleci/ruby:2.5.1
+    #
+    steps:
+      - checkout
+      - restore_cache:
+          key: test-dependencies-{{ checksum "Gemfile" }}
+      - run:
+          name: Install Ruby dependencies
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+      - save_cache:
+          key: test-dependencies-{{ checksum "Gemfile" }}
+          paths:
+            - vendor/bundle
+      # build for prod
+      - run:
+          name: Build the Jekyll site
+          command: bundle exec jekyll build --config _config.yml,_config_prod.yml
+      - run:
+          name: PWD
+          command: pwd
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - _site
+  deploy_s3:
+    docker:
+      - image: circleci/python:2.7-jessie
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: PWD
+          command: pwd
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy to S3
+          command: aws s3 sync /tmp/workspace/_site/ s3://sdgdata.lamayor.org --delete
 workflows:
   version: 2
   test:
@@ -87,6 +128,16 @@ workflows:
                 - master
                 - develop
                 - gh-pages
+                - aws
+  build-deploy:
+    jobs:
+      - build
+      - deploy_s3:
+          requires:
+            - build
+          filters:
+            branches:
+              only: aws
   deploy:
     jobs:
       #- deploy_prod:
