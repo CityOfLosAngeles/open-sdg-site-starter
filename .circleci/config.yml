@@ -134,7 +134,7 @@ workflows:
       - build:
           filters:
             branches:
-              only: gh-pages
+              only: aws
       - deploy_s3:
           requires:
             - build
