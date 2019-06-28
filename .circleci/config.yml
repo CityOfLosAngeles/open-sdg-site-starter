@@ -131,7 +131,10 @@ workflows:
                 - aws
   build-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: aws
       - deploy_s3:
           requires:
             - build
