@@ -131,7 +131,10 @@ workflows:
                 - aws
   build-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: gh-pages
       - deploy_s3:
           requires:
             - build
