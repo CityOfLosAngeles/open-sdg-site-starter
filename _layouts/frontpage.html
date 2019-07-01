@@ -10,7 +10,7 @@
     {% assign instructions_default = t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
     <p>{{ site.frontpage_instructions | default: instructions_default | t }}</p>
     
-    <p>[placeholder for extra instructions]</p>
+    <p>City of LA reporting is currently available for Goals 5, 8, 11, 13 and 16.</p>
     
     {%- assign goals = site.goals | where: 'language', current_language -%}
     {% for goal in goals %}
