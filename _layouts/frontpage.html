@@ -10,9 +10,9 @@
     {% assign instructions_default = t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
     <p>{{ site.frontpage_instructions | default: instructions_default | t }}</p>
     
-    <p>City of LA reporting is currently available for Goals <a href="https://dawncomer.github.io/open-sdg-site-starter/5/">5</a>, 
-        <a href="https://dawncomer.github.io/open-sdg-site-starter/8/">8</a>, <a href="https://dawncomer.github.io/open-sdg-site-starter/11/">11</a>, 
-        <a href="https://dawncomer.github.io/open-sdg-site-starter/13/">13</a> and <a href="https://dawncomer.github.io/open-sdg-site-starter/16/">16</a>.</p>
+    <p>City of LA reporting is currently available for Goals <a href="./5/">5</a>, 
+        <a href="./8/">8</a>, <a href="./11/">11</a>, 
+        <a href="./13/">13</a> and <a href="./16/">16</a>.</p>
     
     {%- assign goals = site.goals | where: 'language', current_language -%}
     {% for goal in goals %}
