@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Reporting Status
+title: Data Summary
 permalink: /reporting-status/
 layout: reportingstatus
 ---
