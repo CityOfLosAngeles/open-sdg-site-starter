@@ -85,7 +85,7 @@ menu:
     translation_key: general.goals
   - path: /reporting-status
     # The "translation_key" refers to the key in the SDG Translations repository.
-    translation_key: menu.data_summary
+    translation_key: data summary
   - path: /about
     translation_key: menu.about
   - path: /guidance
