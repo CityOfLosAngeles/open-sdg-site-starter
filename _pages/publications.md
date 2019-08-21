@@ -6,7 +6,7 @@ layout: page
 
 If you have any feedback on our publications please contact us at <a href="mailto:{{site.email_contacts.suggestions}}">{{site.email_contacts.suggestions}}.</a> 
 
-For more information on the SDG work being done by the City of Los Angeles, visit our website at [sdg.lamayor.org](http://sdg.lamayor.org).
+For more information on the SDG work being done by the City of Los Angeles, visit our website at [sdg.lamayor.org](http://sdg.lamayor.org){:target="_blank"}.
 
 #### City of Los Angeles Voluntary Local Review
 
