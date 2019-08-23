@@ -10,9 +10,7 @@
     {% assign instructions_default = t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
     <p>{{ site.frontpage_instructions | default: instructions_default | t }}</p>
     
-    <p>City of LA reporting is currently available for Goals <a href="./5/">5</a>, 
-        <a href="./8/">8</a>, <a href="./11/">11</a>, 
-        <a href="./13/">13</a> and <a href="./16/">16</a>.</p>
+    <p>The City of Los Angeles is currently exploring data sources for the SDG indicators. To submit data, please email us at <a href="mailto:{{site.email_contacts.questions}}">{{site.email_contacts.questions}}</a>.</p>
     
     {%- assign goals = site.goals | where: 'language', current_language -%}
     {% for goal in goals %}
