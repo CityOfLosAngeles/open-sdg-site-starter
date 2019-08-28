@@ -1,8 +1,9 @@
 ---
-title: About
+title: 
 permalink: /about/
 layout: page
 ---
+# About
 
 This website is for disseminating SDG indicator data for the City of Los Angeles. It is developed by Mayor Garcetti’s Office of International Affairs in collaboration with the City of Los Angeles Information Technology Agency, with support from The Conrad N. Hilton Foundation and The Mayor’s Fund for Los Angeles (MFLA). More information about the project and to see the City of Los Angeles Voluntary Local Review, visit our project [website](http://sdg.lamayor.org).
 
