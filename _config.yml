@@ -90,8 +90,6 @@ menu:
     translation_key: menu.publications 
   - path: /about
     translation_key: menu.about
-  - path: /faq
-    translation_key: menu.faq
 
 # Configure the text (or "translation key") to be used on the
 # non-global metadata tab.
