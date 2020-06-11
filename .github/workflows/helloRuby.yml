@@ -1,3 +1,11 @@
+name: Test Ruby Installation
+
+on: # run this workflow when a push has been made to `Jekyll-Alf` branch
+  push:
+    branches:
+      - Jekyll-Alf
+
+
 jobs:
     build:
     runs-on: ubuntu-16.04  
