@@ -7,12 +7,14 @@ on: # run this workflow when a push has been made to `Jekyll-Alf` branch
 
 
 jobs:
-    build:
-    runs-on: ubuntu-16.04  
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-ruby@v1
-      with:
-        ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
-    - run: ruby hello.rb
-    - run: ruby hello.rb
+     - uses: actions/checkout@v2
+        steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-ruby@v1
+          with:
+            ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+        - run: ruby hello.rb
+        - run: ruby hello.rb
