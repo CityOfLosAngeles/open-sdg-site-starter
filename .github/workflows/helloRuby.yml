@@ -15,4 +15,4 @@ jobs:
           with:
             ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
         - run: ruby hello.rb
-        - run: ruby hello.rb
+        
