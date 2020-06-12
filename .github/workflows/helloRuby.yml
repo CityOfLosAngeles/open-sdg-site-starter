@@ -29,4 +29,4 @@ jobs:
         - name: Install Ruby dependencies
           run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
           
-        - name: Install Jekyll-Alf
+        #- name: Install Jekyll-Alf
