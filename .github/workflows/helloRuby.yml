@@ -18,10 +18,10 @@ jobs:
         #- name: Gem Cache 
         - uses: actions/cache@v2
           with:
-            path: ~/.npm
-            key: ${{ runner.os }}-node-${{ hashFiles('Gemfile') }}
+            path: vendor/bundle
+            key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
             restore-keys: |
-                ${{ runner.os }}-node-
+              ${{ runner.os }}-gems-
     
         - name: Running basic Ruby script
           run: ruby hello.rb
