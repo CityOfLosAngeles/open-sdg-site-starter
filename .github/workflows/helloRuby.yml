@@ -16,5 +16,5 @@ jobs:
             ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
         - run: ruby hello.rb
         
-        name: Install Ruby dependencies
-        - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+        - name: Install Ruby dependencies
+          run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
