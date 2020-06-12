@@ -9,13 +9,16 @@ on: # run this workflow when a push has been made to `Jekyll-Alf` branch
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
+    steps:   
+ ###########################################################################################################
+ #      This is the CI portion
+ ###########################################################################################################
         - uses: actions/checkout@v2
         - uses: actions/setup-ruby@v1
           with:
             ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
        
-        #- name: Gem Cache 
+
         - uses: actions/cache@v2
           with:
             path: vendor/bundle
@@ -31,3 +34,39 @@ jobs:
           
         - name: Install Jekyll-Alf
           run: bundle exec jekyll build
+          
+          
+          
+ ###########################################################################################################
+ #      This is the CD portion
+ ###########################################################################################################       
+          
+        #- uses: actions/checkout@v1 # checks out the code in the repository
+        - name: Setup Python
+          uses: actions/setup-python@v1 # sets up python in our environment
+          with:
+            python-version: '3.x' # install python version 3.x, default architecture is x64
+            
+        
+        - name: Install AWS CLI
+          run: pip3 install awscli --upgrade --user # install the cli with upgrade to any requirements and into the subdir of the user
+          
+          
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v1 # use the official GitHub Action from AWS to setup credentials
+          with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ secrets.AWS_REGION }}
+            mask-aws-account-id: true
+        
+    
+        - name: Push Contents to S3 # push the current working directory to the S3 bucket
+          run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }}/sdg-site --exclude ".git/*" --exclude ".github/*" --delete # have the bucket have the same content in the repo & exclude the git related directories.
+        
+    
+        #- name: Invalidate CloudFront Cache # Invalidate the CloudFront Distribution Cache to get contents from the S3 bucket
+         # run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_DISTRIBUTION_ID }} --paths "/*"
+              
+          
+          
