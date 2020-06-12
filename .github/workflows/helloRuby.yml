@@ -14,8 +14,19 @@ jobs:
         - uses: actions/setup-ruby@v1
           with:
             ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+       
+        - name: Gem Cache 
+            uses: actions/cache@v2
+            with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('Gemfile') }}
+            restore-keys: |
+                ${{ runner.os }}-node-
+        
         - name: Running basic Ruby script
           run: ruby hello.rb
         
         - name: Install Ruby dependencies
           run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+          
+        - name: Install Jekyll-Alf
