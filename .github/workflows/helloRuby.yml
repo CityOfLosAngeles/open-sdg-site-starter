@@ -35,9 +35,11 @@ jobs:
         - name: Install Jekyll-Alf
           run: bundle exec jekyll build --config _config.yml,_config_prod.yml
           
-        - name: Clean temp directory
-          run: rm -rf *
-          working-directory: _site/
+          
+          #Mmm, trying to clean dir as in CircleCI Config file but not the same
+        #- name: Clean temp directory
+         # run: rm -rf *
+          #working-directory: _site/
           
  ###########################################################################################################
  #      This is the CD portion
@@ -64,7 +66,7 @@ jobs:
         
     
         - name: Push Contents to S3 # push the current working directory to the S3 bucket
-          run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }}/sdg-site --exclude ".git/*" --exclude ".github/*" --delete # have the bucket have the same content in the repo & exclude the git related directories.
+          run: aws s3 sync _site/ s3://${{ secrets.S3_BUCKET_NAME }}/sdg-site --exclude ".git/*" --exclude ".github/*" --delete # have the bucket have the same content in the repo & exclude the git related directories.
         
     
         #- name: Invalidate CloudFront Cache # Invalidate the CloudFront Distribution Cache to get contents from the S3 bucket
