@@ -33,9 +33,11 @@ jobs:
           run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
           
         - name: Install Jekyll-Alf
-          run: bundle exec jekyll build
+          run: bundle exec jekyll build --config _config.yml,_config_prod.yml
           
-          
+        - name: Clean temp directory
+          run: rm -rf *
+          working-directory: /tmp/workspace/_site/
           
  ###########################################################################################################
  #      This is the CD portion
