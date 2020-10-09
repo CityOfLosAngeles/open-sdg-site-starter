@@ -34,6 +34,8 @@ jekyll_get_json:
   - data: translations
     json: 'https://open-sdg.github.io/sdg-translations/translations-0.5.1.json'
 
+#d1cpni63eqkjhk.cloudfront.net
+
 analytics:
   ga_prod: ''
 
