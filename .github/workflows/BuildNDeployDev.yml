@@ -73,8 +73,8 @@ jobs:
           run: aws s3 sync _site/ s3://${{ secrets.S3_BUCKET_NAME_DEV }} --exclude ".git/*" --exclude ".github/*" --delete # have the bucket have the same content in the repo & exclude the git related directories.
         
     
-        #- name: Invalidate CloudFront Cache # Invalidate the CloudFront Distribution Cache to get contents from the S3 bucket
-         # run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_DISTRIBUTION_ID }} --paths "/*"
+        - name: Invalidate CloudFront Cache # Invalidate the CloudFront Distribution Cache to get contents from the S3 bucket
+          run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_DISTRIBUTION_ID_DEV }} --paths "/*"
               
           
           
