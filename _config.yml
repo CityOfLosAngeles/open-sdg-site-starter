@@ -34,7 +34,7 @@ jekyll_get_json:
   - data: translations
     json: 'https://open-sdg.github.io/sdg-translations/translations-0.5.1.json'
 
-#Defualt DATA CloudFront AWS Control Tower Dev
+#Defualt DATA CloudFront AWS Control Tower Dev 
 #d26ib27epzwu9e.cloudfront.net
 
 analytics:
