@@ -2,7 +2,7 @@
 # to the bucket. Once the contents of the S3 bucket has been updated, a call will be made to invalidate the cache in the CloudFront distribution.
 # The CloudFront distribution is configured to pull the contents from the S3 bucket once an `invalidation` request is sent.
 
-name: Build and Deploy Static Site
+name: Build and Deploy Production Static Site
 
 on: # run this workflow when a push has been made to `Jekyll-Alf` branch
   push:
@@ -12,38 +12,30 @@ on: # run this workflow when a push has been made to `Jekyll-Alf` branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:   
  ###########################################################################################################
  #      This is the CI portion
  ###########################################################################################################
+        - name: Checkout repo and setup Ruby
         - uses: actions/checkout@v2
         - uses: actions/setup-ruby@v1
           with:
             ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
        
-
+        - name: Cache and Install Gem files
         - uses: actions/cache@v2
           with:
             path: vendor/bundle
             key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
             restore-keys: |
               ${{ runner.os }}-gems-
-    
-        #- name: Running basic Ruby script
-         # run: ruby hello.rb
         
         - name: Install Ruby dependencies
           run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
           
-        - name: Install Jekyll-Alf
+        - name: Install Jekyll and Build
           run: bundle exec jekyll build --config _config.yml,_config_prod.yml
-          
-          
-          #Mmm, trying to clean dir as in CircleCI Config file but not the same
-        #- name: Clean temp directory
-         # run: rm -rf *
-          #working-directory: _site/
           
  ###########################################################################################################
  #      This is the CD portion

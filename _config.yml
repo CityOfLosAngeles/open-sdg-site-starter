@@ -12,10 +12,10 @@
 # Replace this title as needed.
 title: City of Los Angeles Indicators For The Sustainable Development Goals
 # Replace the baseurl with the name of this repository.
-baseurl: "/open-sdg-site-starter"
+baseurl: ""
 url: ""
 data_dir: data
-environment: staging
+environment: development
 # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
 remotedatabaseurl: "https://d26ib27epzwu9e.cloudfront.net"
 
