@@ -7,7 +7,7 @@ name: Build and Deploy Production Static Site
 on: # run this workflow when a push has been made to `Jekyll-Alf` branch
   push:
     branches:
-      - S3Prod
+      - production
 
 
 jobs:
