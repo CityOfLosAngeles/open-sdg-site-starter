@@ -37,6 +37,9 @@ jobs:
           
         - name: Install Jekyll and Build
           run: bundle exec jekyll build --config _config.yml
+
+        - name: Test the HTML # test our rendered html files
+          run: bash scripts/test/html_proofer.sh
           
  ###########################################################################################################
  #      This is the CD portion
