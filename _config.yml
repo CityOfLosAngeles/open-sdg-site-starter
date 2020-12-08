@@ -34,9 +34,6 @@ jekyll_get_json:
   - data: translations
     json: 'https://open-sdg.github.io/sdg-translations/translations-0.5.1.json'
 
-#Defualt DATA CloudFront AWS Control Tower Dev 
-#d26ib27epzwu9e.cloudfront.net
-
 analytics:
   ga_prod: ''
 
@@ -90,7 +87,7 @@ menu:
     # The "translation_key" refers to the key in the SDG Translations repository.
     translation_key: data summary
   - path: /publications/
-    translation_key: menu.publications 
+    translation_key: menu.publications
   - path: /about
     translation_key: menu.about
 
