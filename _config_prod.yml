@@ -11,15 +11,15 @@ environment: production
 #  ga_prod: 'paste UA code here'
 
 # Uncomment and configure to point to a different data source for production.
-remotedatabaseurl: "https://dyde2onadbmzn.cloudfront.net.net"
+remotedatabaseurl: "https://dyde2onadbmzn.cloudfront.net"
 jekyll_get_json:
   - data: meta
-    json: 'https://dyde2onadbmzn.cloudfront.net.net/meta/all.json'
+    json: 'https://dyde2onadbmzn.cloudfront.net/meta/all.json'
   - data: headlines
-    json: 'https://dyde2onadbmzn.cloudfront.net.net/headline/all.json'
+    json: 'https://dyde2onadbmzn.cloudfront.net/headline/all.json'
   - data: schema
-    json: 'https://dyde2onadbmzn.cloudfront.net.net/meta/schema.json'
+    json: 'https://dyde2onadbmzn.cloudfront.net/meta/schema.json'
   - data: reporting
-    json: 'https://dyde2onadbmzn.cloudfront.net.net/stats/reporting.json'
+    json: 'https://dyde2onadbmzn.cloudfront.net/stats/reporting.json'
   - data: translations
     json: 'https://open-sdg.github.io/sdg-translations/translations-0.5.1.json'
