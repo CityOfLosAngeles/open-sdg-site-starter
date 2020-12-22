@@ -1,0 +1,34 @@
+<div id="main-content" class="container search-results" role="main">
+   <div id='mydiv'>
+        <button class='btn btn-primary btn-download'>Download All Metadata</button>
+    </div>
+</div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.js"></script>
+    <script>
+          $(document).ready(function () {
+            $('button').click(function () {
+                fetch("https://dawncomer.github.io/open-sdg-data-starter/meta/all.json")
+                    .then(response => response.json())
+                    .then(function (data) {
+                        var metadataArray = Object.values(data);
+                        var sortedArray = metadataArray.sort((a,b)=>a.indicator_sort_order.replace(/-/g,"").localeCompare(b.indicator_sort_order.replace(/-/g,"")));
+                        var csv = Papa.unparse({ fields: ["title", "sdg_goal", "permalink", "layout", "indicator_name", "indicator", "indicator_sort_order", "target", "target_id", "indicator_definition", "un_designated_tier", "un_custodian_agency", "goal_meta_link", "goal_meta_link_text", "national_indicator_available", "national_indicator_description", "national_geographical_coverage", "computation_units", "computation_definitions", "computation_calculations", "data_disaggregation_information", "wccd_iso_37120_alignment", "comments_limitations", "national_data_update_url", "national_data_update_url_text", "national_metadata_update_url", "national_metadata_update_url_text", "tags", "reporting_status", "data_non_statistical", "data_footnote", "data_geocode_regex", "data_keywords", "data_show_map", "graph_type", "graph_title", "source_active_1", "source_organisation_1", "source_periodicity_1", "source_earliest_available_1", "source_geographical_coverage_1", "source_url_1", "source_url_text_1", "source_release_date_1", "source_next_release_1", "source_statistical_classification_1", "source_contact_1", "source_other_info_1", "source_active_2", "source_organisation_2", "source_periodicity_2", "source_earliest_available_2", "source_geographical_coverage_2", "source_url_2", "source_url_text_2", "source_release_date_2", "source_next_release_2", "source_statistical_classification_2", "source_contact_2", "source_other_info_2", "source_active_3", "source_organisation_3", "source_periodicity_3", "source_earliest_available_3", "source_geographical_coverage_3", "source_url_3", "source_url_text_3", "source_release_date_3", "source_next_release_3", "source_statistical_classification_3", "source_contact_3", "source_other_info_3", "source_active_4", "source_organisation_4", "source_periodicity_4", "source_earliest_available_4", "source_geographical_coverage_4", "source_url_4", "source_url_text_4", "source_release_date_4", "source_next_release_4", "source_statistical_classification_4", "source_contact_4", "source_other_info_4", "source_active_5", "source_organisation_5", "source_periodicity_5", "source_earliest_available_5", "source_geographical_coverage_5", "source_url_5", "source_url_text_5", "source_release_date_5", "source_next_release_5", "source_statistical_classification_5", "source_contact_5", "source_other_info_5", "source_active_6", "source_organisation_6", "source_periodicity_6", "source_earliest_available_6", "source_geographical_coverage_6", "source_url_6", "source_url_text_6", "source_release_date_6", "source_next_release_6", "source_statistical_classification_6", "source_contact_6", "source_other_info_6"], data: JSON.stringify(sortedArray) });
+                        var blob = new Blob([csv]);
+                        if (window.navigator.msSaveOrOpenBlob)
+                            window.navigator.msSaveBlob(blob, "SDGmetadata.csv");
+                        else {
+                            var a = window.document.createElement("a");
+                            a.href = window.URL.createObjectURL(blob, { type: "text/plain" });
+                            a.download = "SDGmetadata.csv";
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            });
+        });
+    </script>
