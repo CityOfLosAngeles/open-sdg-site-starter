@@ -12,7 +12,7 @@
 # Replace this title as needed.
 title: City of Los Angeles Indicators For The Sustainable Development Goals
 # Replace the baseurl with the name of this repository.
-baseurl: "/open-sdg-site-starter"
+baseurl: ""
 url: ""
 data_dir: data
 environment: development
@@ -77,12 +77,12 @@ menu:
   # Use these to customise the main navigation.
   - path: /
     translation_key: general.goals
-  - path: /reporting-status
+  - path: /reporting-status/
     # The "translation_key" refers to the key in the SDG Translations repository.
     translation_key: data summary
   - path: /publications/
     translation_key: menu.publications
-  - path: /about
+  - path: /about/
     translation_key: menu.about
 
 # Configure the text (or "translation key") to be used on the
