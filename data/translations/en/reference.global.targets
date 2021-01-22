@@ -64,6 +64,9 @@
 10.c:
   title: By 2030, reduce to less than 3 per cent the transaction costs of migrant
     remittances and eliminate remittance corridors with costs higher than 5 per cent
+10.x:
+  title: End discrimination against LGBTQIA+ persons and ensure that LGBTQIA+ persons have 
+    equal access to services and employment opportunities
 '11.1':
   title: By 2030, ensure access for all to adequate, safe and affordable housing and
     basic services
@@ -412,7 +415,7 @@
     and their derivatives and facilitate timely access to market information, including
     on food reserves, in order to help limit extreme food price volatility
 '3.1':
-  title: By 2030, reduce the global maternal mortality ratio to less than 5 per 100,000
+  title: By 2030, reduce the global maternal mortality ratio to less than 70 per 100,000
     live births for every race and ethnic group
 '3.2':
   title: By 2030, end preventable deaths of newborns and children under 5 years of
@@ -523,7 +526,7 @@
 5.c:
   title: Adopt and strengthen sound policies and enforceable legislation for the promotion
     of gender equality and the empowerment of all women and girls at all levels
-'5.d*':
+'5.x':
   title: End discrimination against LGBTQIA+ persons and ensure that LGBTQIA+ persons have 
     equal access to services and employment opportunities
 '6.1':

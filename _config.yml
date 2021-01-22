@@ -17,22 +17,16 @@ url: ""
 data_dir: data
 environment: development
 # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-remotedatabaseurl: "https://d26ib27epzwu9e.cloudfront.net"
+remote_data_prefix: "https://d26ib27epzwu9e.cloudfront.net"
+remote_translations:
+  - https://open-sdg.github.io/sdg-translations/translations-0.8.1.json
 
-jekyll_get_json:
-  - data: meta
-    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://d26ib27epzwu9e.cloudfront.net/meta/all.json'
-  - data: headlines
-    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://d26ib27epzwu9e.cloudfront.net/headline/all.json'
-  - data: schema
-    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://d26ib27epzwu9e.cloudfront.net/meta/schema.json'
-  - data: reporting
-    json: 'https://d26ib27epzwu9e.cloudfront.net/stats/reporting.json'
-  - data: translations
-    json: 'https://open-sdg.github.io/sdg-translations/translations-0.5.1.json'
+create_indicators:
+  layout: indicator
+create_goals:
+  layout: goal-by-target
+create_pages: true
+
 
 analytics:
   ga_prod: ''
@@ -51,7 +45,7 @@ email_contacts:
 repo_name: open-sdg-data-starter
 branch: develop
 # Replace this value as needed.
-org_name: dawncomer
+org_name: CityOfLosAngeles 
 
 # Build settings
 markdown: kramdown
@@ -83,12 +77,12 @@ menu:
   # Use these to customise the main navigation.
   - path: /
     translation_key: general.goals
-  - path: /reporting-status
+  - path: /reporting-status/
     # The "translation_key" refers to the key in the SDG Translations repository.
     translation_key: data summary
   - path: /publications/
     translation_key: menu.publications
-  - path: /about
+  - path: /about/
     translation_key: menu.about
 
 # Configure the text (or "translation key") to be used on the
@@ -113,12 +107,47 @@ goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
 # Tell Jekyll to use the Remote Theme plugin.
 plugins:
   - jekyll-remote-theme
-  - jekyll-get-json
   - jekyll-open-sdg-plugins
 
 # Tell the Remote Theme plugin to use the Open SDG platform (Jekyll theme).
-remote_theme: brockfanning/open-sdg@chartjs-component-cleanup
+remote_theme: open-sdg/open-sdg@0.9.4
 
 # Apply any custom CSS.
 custom_css:
   - /assets/css/custom.css
+  
+# This is the same as what is used on the current frontpage.
+frontpage_introduction_banner:
+  title: My frontpage introduction banner title
+  description: My frontpage introduction banner description
+
+# This controls the text that appears above the goals grid.
+frontpage_goals_grid:
+  title: The Sustainable Development Goals
+  description: Click on each [goal](../goals) for data for Sustainable Development Goal global indicators.
+
+# This controls the three-column "cards" that appear below the goals grid.
+frontpage_cards:
+  - title: Download all data
+    # This "feature" is used for baked-in stuff like "bulk_download".
+    include: components/download-all-data.html
+    # Optionally control the color of the line above the card title.
+    rule_color: green
+  - title: Useful resources
+    rule_color: blue
+    # Control the content of the card - can use Markdown.
+    content: |
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+  - title: Publications
+    rule_color: orange
+    content: |
+      * [Publication](https://example.com)
+      * [Publication](https://example.com)
+      * [Publication](https://example.com)
+    # Optionally add a button at the bottom of the card.
+    button_label: View more publications
+    button_link: https://example.com  
