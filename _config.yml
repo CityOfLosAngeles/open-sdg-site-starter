@@ -43,7 +43,7 @@ email_contacts:
 # Github Repo for Data
 # Replace this value as needed.
 repo_name: open-sdg-data-starter
-branch: develop
+branch: development
 # Replace this value as needed.
 org_name: CityOfLosAngeles 
 
