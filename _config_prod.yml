@@ -11,7 +11,7 @@ environment: production
 #  ga_prod: 'paste UA code here'
 
 # Uncomment and configure to point to a different data source for production.
-remote_data_prefix: https://dyde2onadbmzn.cloudfront.net
+remote_data_prefix: https://sdgdatabase.lamayor.org
 remote_translations:
   - https://open-sdg.github.io/sdg-translations/translations-0.8.1.json
 analytics:
