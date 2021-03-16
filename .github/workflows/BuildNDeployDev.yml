@@ -9,7 +9,8 @@ on: # run this workflow when a push has been made to `development` branch
     branches:
       - development
   repository_dispatch: # Listen for repository dispatch event from open-sdg-data-starter workflow
- 
+    types: [dev_triggered_from_open-sdg-data-starter]
+
 jobs:
   deploy:
     runs-on: ubuntu-20.04
