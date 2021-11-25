@@ -1,4 +1,4 @@
-# This workflow will checkout the contents of the `S3Dev` branch of this repo, remove all files in the current S3 bucket, and push the contents
+# This workflow will checkout the contents of the `production` branch of this repo, remove all files in the current S3 bucket, and push the contents
 # to the bucket. Once the contents of the S3 bucket has been updated, a call will be made to invalidate the cache in the CloudFront distribution.
 # The CloudFront distribution is configured to pull the contents from the S3 bucket once an `invalidation` request is sent.
 
@@ -8,6 +8,8 @@ on: # run this workflow when a push has been made to `Jekyll-Alf` branch
   push:
     branches:
       - production
+  repository_dispatch: # Listen for repository dispatch event from open-sdg-data-starter workflow
+    types: [prod_triggered_from_open-sdg-data-starter]
 
 
 jobs:
@@ -19,6 +21,8 @@ jobs:
  ###########################################################################################################
         - name: Checkout repo
           uses: actions/checkout@v2
+          with:
+            ref: production
         
         - name: Setup Ruby
           uses: actions/setup-ruby@v1
