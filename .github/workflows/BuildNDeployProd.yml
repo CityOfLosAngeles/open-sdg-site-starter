@@ -11,16 +11,18 @@ on: # run this workflow when a push has been made to `Jekyll-Alf` branch
   repository_dispatch: # Listen for repository dispatch event from open-sdg-data-starter workflow
     types: [prod_triggered_from_open-sdg-data-starter]
 
-
 jobs:
   deploy:
     runs-on: ubuntu-20.04
+    environment:
+      name: production
+      url: https://${{ vars.SITE_DOMAIN_NAME }}
     steps:   
  ###########################################################################################################
  #      This is the CI portion
  ###########################################################################################################
         - name: Checkout repo
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
           with:
             ref: production
         
@@ -30,7 +32,7 @@ jobs:
             ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
        
         - name: Cache and Install Gem files
-          uses: actions/cache@v2
+          uses: actions/cache@v3
           with:
             path: vendor/bundle
             key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -52,7 +54,7 @@ jobs:
           
         #- uses: actions/checkout@v1 # checks out the code in the repository
         - name: Setup Python
-          uses: actions/setup-python@v1 # sets up python in our environment
+          uses: actions/setup-python@v4 # sets up python in our environment
           with:
             python-version: '3.x' # install python version 3.x, default architecture is x64
             
@@ -62,19 +64,19 @@ jobs:
           
           
         - name: Configure AWS Credentials
-          uses: aws-actions/configure-aws-credentials@v1 # use the official GitHub Action from AWS to setup credentials
+          uses: aws-actions/configure-aws-credentials@v1-node16 # use the official GitHub Action from AWS to setup credentials
           with:
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: ${{ secrets.AWS_REGION }}
             mask-aws-account-id: true
         
     
         - name: Push Contents to S3 # push the current working directory to the S3 bucket
-          run: aws s3 sync _site/ s3://${{ secrets.S3_BUCKET_NAME_PROD }} --exclude ".git/*" --exclude ".github/*" --delete # have the bucket have the same content in the repo & exclude the git related directories.
+          run: aws s3 sync _site/ s3://${{ secrets.S3_BUCKET_NAME }} --exclude ".git/*" --exclude ".github/*" --delete # have the bucket have the same content in the repo & exclude the git related directories.
         
         - name: Invalidate CloudFront Cache # Invalidate the CloudFront Distribution Cache to get contents from the S3 bucket
-          run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_DISTRIBUTION_ID_PROD }} --paths "/*"
+          run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_DISTRIBUTION_ID }} --paths "/*"
               
           
           
