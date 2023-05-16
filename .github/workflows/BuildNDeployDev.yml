@@ -7,7 +7,7 @@ name: Build and Deploy Development Static Site
 on: # run this workflow when a push has been made to `development` branch
   push:
     branches:
-      - development
+      - ghi-23 # development
   repository_dispatch: # Listen for repository dispatch event from open-sdg-data-starter workflow
     types: [dev_triggered_from_open-sdg-data-starter]
 
