@@ -41,7 +41,7 @@ jobs:
               ${{ runner.os }}-gems-
         
         - name: Install Ruby dependencies
-          run: bundle config set --local path 'vendor/bundle' | bundle install --local path 'vendor/bundle'
+          run: bundle config set --local path 'vendor/bundle' | bundle install 'vendor/bundle'
 
         - name: Install Jekyll and Build
           run: bundle exec jekyll build --config _config.yml
