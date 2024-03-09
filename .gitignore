@@ -10,3 +10,4 @@ _site/
 deploy_key*
 deploy_key*.pub
 *.keybase
+vendor/
