@@ -20,7 +20,7 @@ environment: staging
 # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
 remote_data_prefix: "https://sdgdatabase-dev.itacloudops.org"
 remote_translations:
-  - https://open-sdg.github.io/sdg-translations/translations-0.8.1.json
+  - https://open-sdg.github.io/sdg-translations/translations-2.1.0.json
 
 create_indicators:
   layout: indicator
@@ -50,8 +50,16 @@ org_name: CityOfLosAngeles
 # Build settings
 markdown: kramdown
 
-# Travis Support
-exclude: [vendor, scripts, remotedata]
+# Exclude some files/folders.
+exclude:
+  - vendor
+  - scripts
+  - remotedata
+  - Gemfile
+  - Gemfile.lock
+  - README
+  - README.md
+  - LICENSE
 
 # International Support
 # Eg name: Australia and adjective: Australian
@@ -110,7 +118,7 @@ plugins:
   - jekyll-open-sdg-plugins
 
 # Tell the Remote Theme plugin to use the Open SDG platform (Jekyll theme).
-remote_theme: open-sdg/open-sdg@0.9.4
+remote_theme: open-sdg/open-sdg@2.3.0
 
 # Apply any custom CSS.
 custom_css:

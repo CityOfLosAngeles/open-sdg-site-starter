@@ -7,7 +7,6 @@ _site/
 .spyproject/
 *__pycache__/
 *.Rproj
-Gemfile.lock
 deploy_key*
 deploy_key*.pub
 *.keybase
