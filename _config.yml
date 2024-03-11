@@ -158,4 +158,21 @@ frontpage_cards:
       * [Publication](https://example.com)
     # Optionally add a button at the bottom of the card.
     button_label: View more publications
-    button_link: https://example.com  
+    button_link: https://example.com
+
+# TODO: Investigate this https://open-sdg.readthedocs.io/en/latest/configuration/#reporting_status
+reporting_status:
+    title: title goes here
+    description: description goes here
+    disaggregation_indicator_count_label: indicators in scope
+    disaggregation_tabs: true
+    status_types:
+      - value: notstarted
+        label: status.exploring_data_sources
+        hide_on_goal_pages: false
+      - value: complete
+        label: status.reported_online
+        hide_on_goal_pages: true
+      - value: notapplicable
+        label: status.not_applicable
+        hide_on_goal_pages: false
