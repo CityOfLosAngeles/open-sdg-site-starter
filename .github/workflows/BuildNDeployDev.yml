@@ -9,7 +9,7 @@ on: # run this workflow when a push has been made to `development` branch
     types: [dev_triggered_from_open-sdg-data-starter]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-22.04
     steps:
         - name: Checkout repo
@@ -34,12 +34,12 @@ jobs:
           run: zip -r _site.zip _site 
 
         - name: Upload site artifact # only upload the zip if the push was made to the development branch
-            if: ${{ github.ref == 'refs/heads/development' }}
-            uses: actions/upload-artifact@v4
-            with:
-              name: site-deployment-dev
-              path: _site.zip
-              retention-days: 1 # delete the artifact after 1 day
+          if: ${{ github.ref == 'refs/heads/development' }}
+          uses: actions/upload-artifact@v4
+          with:
+            name: site-deployment-dev
+            path: _site.zip
+            retention-days: 1 # delete the artifact after 1 day
           
   deploy:
     runs-on: ubuntu-22.04
