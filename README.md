@@ -36,3 +36,10 @@ For each command listed above, you will be able to access the site locally by vi
 **To build the development site locally and have `_site` directory updated and available:**
 
 `bundle exec jekyll build --config _config.yml,_config_prod.yml`. Note you may need to change the `remote_data_prefix:` in `_config_prod.yml` appropraitely as you see fit. Run `./scripts/test/html_proofer_prod.sh` to perform html validation.
+
+### GitHub Actions
+
+GitHub Actions is used for building, verifying, and deploying the site contents. The production GitHub Actions workflow file, `BuildNDeployProd.yml` is currently 
+configured to build, verify, and deploy the site to the production environment. The development GitHub Actions workflow file, `BuildNDeployDev.yml` currently is 
+configured to build and verify the site when git pushes are made to any branch but `production` verifying changes within the branch that was pushed. On git pushes to 
+the `development` branch, the workflow will proceed to build, verify, and deploy the site to the development environment.
