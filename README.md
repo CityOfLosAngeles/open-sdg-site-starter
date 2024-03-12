@@ -31,8 +31,8 @@ For each command listed above, you will be able to access the site locally by vi
 
 **To build the development site locally and have `_site` directory updated and available:**
 
-`bundle exec jekyll build --config _config.yml`
+`bundle exec jekyll build --config _config.yml`. Run `bash scripts/test/html_proofer_staging.sh` to perform html validation.
 
 **To build the development site locally and have `_site` directory updated and available:**
 
-`bundle exec jekyll build --config _config.yml,_config_prod.yml`. Note you may need to change the `remote_data_prefix:` in `_config_prod.yml` appropraitely as you see fit.
+`bundle exec jekyll build --config _config.yml,_config_prod.yml`. Note you may need to change the `remote_data_prefix:` in `_config_prod.yml` appropraitely as you see fit. Run `bash scripts/test/html_proofer_prod.sh` to perform html validation.
