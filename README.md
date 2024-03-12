@@ -17,7 +17,7 @@ You will need to build the SDG Data site first locally in order to proceed with 
 
 4.) In a separate VS Code window have this project opened and navigate to the `_config.yml` file and change `remote_data_prefix:` set to `"http://localhost:9000"`. Remember to revert this change before committing.
 
-5.) Proceed with the steps below
+5.) Proceed with the steps below after running `bundle check --path=vendor/bundle || bundle install --path=vendor/bundle` to install the necessary dependencies.
 
 **Test what development will look like by running the following command:**
 
