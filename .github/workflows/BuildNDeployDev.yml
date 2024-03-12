@@ -1,44 +1,24 @@
-# This workflow will checkout the contents of the `development` branch of this repo, remove all files in the current S3 bucket, and push the contents
-# to the bucket. Once the contents of the S3 bucket has been updated, a call will be made to invalidate the cache in the CloudFront distribution.
-# The CloudFront distribution is configured to pull the contents from the S3 bucket once an `invalidation` request is sent.
 
-name: Build and Deploy Development Static Site 
+name: Build and Deploy Development Static Site Dev # run this workflow when a push has been made. if a push has been made to the development branch it will deploy the site to the hosting environment
 
 on: # run this workflow when a push has been made to `development` branch
   push:
-    branches:
-      - development
+    branches-ignore:
+      - production
   repository_dispatch: # Listen for repository dispatch event from open-sdg-data-starter workflow
     types: [dev_triggered_from_open-sdg-data-starter]
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
-    environment:
-      name: development
-      url: https://${{ vars.SITE_DOMAIN_NAME }}
-    steps:   
- ###########################################################################################################
- #      This is the CI portion
- ###########################################################################################################
+    runs-on: ubuntu-22.04
+    steps:
         - name: Checkout repo
-          uses: actions/checkout@v2
-          with:
-            ref: development
+          uses: actions/checkout@v4
         
         - name: Setup Ruby
-          uses: actions/setup-ruby@v1
+          uses: ruby/setup-ruby@v1
           with:
-            ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
-       
-
-        - name: Cache and Install Gem files
-          uses: actions/cache@v3
-          with:
-            path: vendor/bundle
-            key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-            restore-keys: |
-              ${{ runner.os }}-gems-
+            ruby-version: '3.2' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
         
         - name: Install Ruby dependencies
           run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
@@ -47,38 +27,48 @@ jobs:
           run: bundle exec jekyll build --config _config.yml
 
         - name: Test the HTML # test our rendered html files
-          run: bash scripts/test/html_proofer.sh
+          run: bash scripts/test/html_proofer_staging.sh
+
+        - name: Zip site artifact # only zip the site if the push was made to the development branch
+          if: ${{ github.ref == 'refs/heads/development' }}
+          run: zip -r _site.zip _site 
+
+        - name: Upload site artifact # only upload the zip if the push was made to the development branch
+            if: ${{ github.ref == 'refs/heads/development' }}
+            uses: actions/upload-artifact@v4
+            with:
+              name: site-deployment-dev
+              path: _site.zip
+              retention-days: 1 # delete the artifact after 1 day
           
- ###########################################################################################################
- #      This is the CD portion
- ###########################################################################################################       
-          
-        #- uses: actions/checkout@v1 # checks out the code in the repository
-        - name: Setup Python
-          uses: actions/setup-python@v4 # sets up python in our environment
-          with:
-            python-version: '3.x' # install python version 3.x, default architecture is x64
-            
-        
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: [build]
+    if: (github.ref == 'refs/heads/development')
+    environment:
+        name: development
+        url: https://${{ vars.SITE_DOMAIN_NAME }}
+    steps:
         - name: Install AWS CLI
           run: pip3 install awscli --upgrade --user # install the cli with upgrade to any requirements and into the subdir of the user
-          
-          
+            
         - name: Configure AWS Credentials
-          uses: aws-actions/configure-aws-credentials@v1-node16 # use the official GitHub Action from AWS to setup credentials
+          uses: aws-actions/configure-aws-credentials@v4 # use the official GitHub Action from AWS to setup credentials
           with:
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            role-to-assume: ${{ secrets.ROLE_ARN }}
             aws-region: ${{ secrets.AWS_REGION }}
             mask-aws-account-id: true
+
+        - name: Fetch site artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: site-deployment-dev
+
+        - name: Unzip site artifact
+          run: unzip _site.zip
         
-    
         - name: Push Contents to S3 # push the current working directory to the S3 bucket
           run: aws s3 sync _site/ s3://${{ secrets.S3_BUCKET_NAME }} --exclude ".git/*" --exclude ".github/*" --delete # have the bucket have the same content in the repo & exclude the git related directories.
         
-    
         - name: Invalidate CloudFront Cache # Invalidate the CloudFront Distribution Cache to get contents from the S3 bucket
-          run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_DISTRIBUTION_ID }} --paths "/*"
-              
-          
-          
+          run: aws cloudfront create-invalidation --distribution-id "$CDN_DISTRIBUTION_ID" --paths "/*"
