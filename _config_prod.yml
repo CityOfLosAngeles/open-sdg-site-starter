@@ -13,6 +13,6 @@ environment: production
 # Uncomment and configure to point to a different data source for production.
 remote_data_prefix: https://sdgdatabase.lamayor.org
 remote_translations:
-  - https://open-sdg.github.io/sdg-translations/translations-0.8.1.json
+  - https://open-sdg.github.io/sdg-translations/translations-2.1.0.json
 analytics:
   ga_prod: 'UA-98192566-4'

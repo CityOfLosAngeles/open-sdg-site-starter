@@ -1,96 +1,112 @@
-{% include multilingual.html %}
 {% include head.html %}
 {% include header.html %}
 
-<div id="main-content" class="container reportingstatus">
+{% assign reporting_data = site.data.reporting %}
+{% if site.data[page.language].reporting %}
+  {% assign reporting_data = site.data[page.language].reporting %}
+{% endif %}
 
-    
-  <h1>{{ t.status.reporting_status }}</h1>
+{% assign disagg_data = site.data.disaggregation %}
+{% if site.data[page.language].disaggregation %}
+  {% assign disagg_data = site.data[page.language].disaggregation %}
+{% endif %}
 
-  {%- assign overall = site.data.reporting.overall -%}
-  <div class="goal goal-overall">
-    <div class="details">
-      <h2 class="status-goal">
-        {{ t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span>
-          {{ t.general.indicators | downcase }}</span>
-      </h2>
-      <div class="summary">
-        <div class="statuses">
-          {%- for status in overall.statuses -%}
-          <div>
-            <span
-              class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span
-              class="value">{{ status.percentage }}%</span>
-          </div>
-          {%- endfor -%}
+{%- assign extra_fields = false -%}
+{%- for extra_field in reporting_data.extra_fields -%}
+  {%- assign extra_fields = true -%}
+{%- endfor -%}
 
-          <br style="clear:both;">
-        </div>
-      </div>
-      <div class="goal-stats">
-        {%- for status in overall.statuses -%}
-        {% assign status_count_precise = status.count | times: 1.0 %}
-        {% assign overall_total_precise = overall.totals.total  | times: 1.0 %}
-        {% assign percentage_precise = status_count_precise | divided_by: overall_total_precise | times: 100 %}
-        <span class="{{ status.status | slugify }}" style="width:{{ percentage_precise }}%"
-          title="{{ status.translation_key | t }}: {{ status.percentage }}%"></span>
-        {%- endfor -%}
-      </div>
+{% assign show_tabs = false %}
+{% if extra_fields %}
+  {% assign show_tabs = true %}
+{% elsif site.reporting_status.disaggregation_tabs and disagg_data %}
+  {% assign show_tabs = true %}
+{% endif %}
+<div class="container">
+  {% include components/page/breadcrumbs.html %}
+</div>
+<div id="main-content" class="container reportingstatus" role="main">
 
+  {% include components/reporting-status-introduction.html %}
+
+  <div>
+  {% if show_tabs %}
+  <ul class="nav nav-tabs reporting-status-view" role="tablist">
+    <li role="presentation" class="nav-item active">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#goalsview" aria-controls="goalsview" role="tab" {% include autotrack.html preset="tab_reporting_status_goals" category="Tab change" action="Change reporting status view" label="Change reporting status view to goals" %}>{{ page.t.status.reporting_status }}</button>
+    </li>
+    {% if extra_fields %}
+      {% for extra_field in reporting_data.extra_fields %}
+      {% assign extra_field_name = extra_field[0] %}
+      {% assign extra_field_translated = extra_field_name | translate_metadata_field %}
+      {% assign extra_field_autotrack = 'Change reporting status view to ' | append: extra_field_name %}
+      <li role="presentation" class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#{{ extra_field_name }}view" aria-controls="{{ extra_field_name }}view" role="tab" {% include autotrack.html preset="tab_reporting_status_extra_field" category="Tab change" action="Change reporting status view" label=extra_field_autotrack %}>{{ page.t.status.status_by_field | replace: "%field", extra_field_translated }}</button>
+      </li>
+      {% endfor %}
+    {% endif %}
+
+    {% if site.reporting_status.disaggregation_tabs %}
+      <li role="presentation" class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#disaggregationsview" aria-controls="disaggregationsview" role="tab" {% include autotrack.html preset="tab_reporting_status_disaggregations" category="Tab change" action="Change reporting status view" label="Change reporting status view to disaggregations" %}>{{ page.t.status.disaggregation_status }}</button>
+      </li>
+      {% if extra_fields %}
+        {% for extra_field in reporting_data.extra_fields %}
+        {% assign extra_field_name = extra_field[0] %}
+        {% assign extra_field_translated = extra_field_name | translate_metadata_field %}
+        {% assign extra_field_autotrack = 'Change disaggregation status view to ' | append: extra_field_name %}
+        <li role="presentation" class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#{{ extra_field_name }}-disaggregationsview" aria-controls="{{ extra_field_name }}-disaggregationsview" role="tab" {% include autotrack.html preset="tab_disaggregation_status_extra_field" category="Tab change" action="Change disaggregation status view" label=extra_field_autotrack %}>{{ page.t.status.disaggregation_status_by_field | replace: "%field", extra_field_translated }}</button>
+        </li>
+        {% endfor %}
+      {% endif %}
+
+    {% endif %}
+  </ul>
+  {% endif %}
+
+  {% if show_tabs %}
+  <div class="tab-content reporting-status-view">
+    <div role="tabpanel" class="tab-pane active" id="goalsview">
+  {% endif %}
+  {% include components/reportingstatus/reporting-status-overall.html overall=reporting_data.overall title=page.t.status.overall_reporting_status status_types="reporting_status" %}
+  {% include components/reportingstatus/reporting-status-by-goal.html goals=reporting_data.goals title=page.t.status.status_by_goal status_types="reporting_status" %}
+  {% if show_tabs %}
     </div>
-    <!--</li>-->
-    <br style="clear:both;">
+  {% endif %}
+
+  {% if extra_fields %}
+    {%- for extra_field in reporting_data.extra_fields -%}
+    {% assign extra_field_name = extra_field[0] %}
+    <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}view" data-extra-field="true">
+      {% include components/reportingstatus/reporting-status-overall.html hide_wheel=true overall=reporting_data.overall title=page.t.status.overall_reporting_status status_types="reporting_status" %}
+      {% include components/reportingstatus/reporting-status-by-field.html extra_field=extra_field title=page.t.status.status_by_field status_types="reporting_status" %}
+    </div>
+    {%- endfor -%}
+  {% endif %}
+
+  {% if site.reporting_status.disaggregation_tabs and disagg_data %}
+    <div role="tabpanel" class="tab-pane" id="disaggregationsview">
+      {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title=page.t.status.disaggregation_status_overall status_types="disaggregation_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
+      {% include components/reportingstatus/reporting-status-by-goal.html goals=disagg_data.goals title=page.t.status.status_by_goal status_types="disaggregation_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
+    </div>
+
+    {% if extra_fields %}
+      {%- for extra_field in disagg_data.extra_fields -%}
+      {% assign extra_field_name = extra_field[0] %}
+      <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}-disaggregationsview" data-extra-field="true">
+        {% include components/reportingstatus/reporting-status-overall.html hide_wheel=true overall=disagg_data.overall title=page.t.status.disaggregation_status_overall status_types="disaggregation_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
+        {% include components/reportingstatus/reporting-status-by-field.html extra_field=extra_field title=page.t.status.disaggregation_status_by_field status_types="disaggregation_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
+      </div>
+      {%- endfor -%}
+    {% endif %}
+  {% endif %}
+
+  {% if show_tabs %}
   </div>
-  
-  
-  <h2>{{ t.status.status_by_goal }}</h2>
+  {% endif %}
 
-  {%- for goalreport in site.data.reporting.goals -%}
-  {%- assign goal_number = goalreport.goal  | downcase -%}
-  {%- assign goal_short_key = goal_number | append: '-short' -%}
-  {%- assign goal_short = t.global_goals[goal_short_key] -%}
-  <div class="goal">
-    <div class="frame">
-      <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ goal_number }}/">
-        <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png"
-          alt="{{ goal_short }} - {{ t.general.goal }} {{ goal_number }}" width="100" height="100" />
-      </a>
-    </div>
-    <div class="details">
-      <h3 class="status-goal">
-        <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ goal_number }}/">{{ goal_short }}</a>
-        <span class="total">{{ goalreport.totals.total }}<span></span> {{ t.general.indicators | downcase }}</span>
-      </h3>
-      <div class="summary">
-        <div class="statuses">
-          {%- for status in goalreport.statuses -%}
-          <div>
-            <span
-              class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span
-              class="value">{{ status.percentage }}%</span>
-          </div>
-          {%- endfor -%}
-          <br style="clear:both;">
-        </div>
-      </div>
-      <div class="goal-stats">
-        {%- for status in goalreport.statuses -%}
-        {% assign status_count_precise = status.count | times: 1.0 %}
-        {% assign goalreport_total_precise = goalreport.totals.total  | times: 1.0 %}
-        {% assign percentage_precise = status_count_precise | divided_by: goalreport_total_precise | times: 100 %}<span
-          class="{{ status.status | slugify }}" style="width:{{ percentage_precise }}%"
-          title="{{ status.translation_key | t }}: {{ status.percentage }}%"></span>
-        {%- endfor -%}
-      </div>
-      <div class="divider">
-      </div>
-    </div>
-    <!--</li>-->
-    <br style="clear:both;">
   </div>
-  {%- endfor -%}
-
-  <!--{{ content }}-->
-
+  {% include back-to-top.html %}
 </div>
 {% include footer.html %}
