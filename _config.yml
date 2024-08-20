@@ -18,7 +18,7 @@ data_dir: data
 # environment must be set to staging to toggle the edit buttions for prose.io
 environment: staging
 # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-remote_data_prefix: "https://sdgdatabase-dev.itacloudops.org"
+remote_data_prefix: "sdg-data-starter-dev.itacloudops.org"
 remote_translations:
   - https://open-sdg.github.io/sdg-translations/translations-2.1.0.json
 
