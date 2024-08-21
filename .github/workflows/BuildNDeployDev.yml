@@ -1,3 +1,4 @@
+# This workflow can be invoked by all branches except production where only the development branch can trigger the "deploy" job.
 
 name: Build and Deploy Development Static Site Dev # run this workflow when a push has been made. if a push has been made to the development branch it will deploy the site to the hosting environment
 
@@ -5,34 +6,33 @@ on: # run this workflow when a push has been made to `development` branch
   push:
     branches-ignore:
       - production
-  repository_dispatch: # Listen for repository dispatch event from open-sdg-data-starter workflow
-    types: [dev_triggered_from_open-sdg-data-starter]
+  workflow_dispatch: 
+  #repository_dispatch: # Listen for repository dispatch event from open-sdg-data-starter workflow, TBD
+  #  types: [dev_triggered_from_open-sdg-data-starter], TBD
 
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
         - name: Checkout repo
-          uses: actions/checkout@v4
+          uses: actions/checkout@v4 # checks out the code in the repository
         
         - name: Setup Ruby
-          uses: ruby/setup-ruby@v1
+          uses: ruby/setup-ruby@v1 # sets up ruby in our environment and install Ruby dependencies
           with:
-            ruby-version: '3.2' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+            ruby-version: '3.2' # install ruby version 3.2
+            bundler-cache: true # https://github.com/ruby/setup-ruby?tab=readme-ov-file#caching-bundle-install-automatically, it will perform caching and does run `bundle config --local path $PWD/vendor/bundle` & `bundle install`. It will handle the Gemfile.lock file appropriately.
         
-        - name: Install Ruby dependencies
-          run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
-          
-        - name: Install Jekyll and Build
-          run: bundle exec jekyll build --config _config.yml
-
-        - name: Test the HTML # test our rendered html files
+        - name: Build the development site
+          run: bundle exec jekyll build --config _config.yml # build the site using the development configuration file
+        
+        - name: Perform HTML validation # test our rendered html files
           run: bash scripts/test/html_proofer_staging.sh
-
+        
         - name: Zip site artifact # only zip the site if the push was made to the development branch
           if: ${{ github.ref == 'refs/heads/development' }}
-          run: zip -r _site.zip _site 
-
+          run: zip -r _site.zip _site
+        
         - name: Upload site artifact # only upload the zip if the push was made to the development branch
           if: ${{ github.ref == 'refs/heads/development' }}
           uses: actions/upload-artifact@v4
@@ -71,4 +71,4 @@ jobs:
           run: aws s3 sync _site/ s3://${{ secrets.S3_BUCKET_NAME }} --exclude ".git/*" --exclude ".github/*" --delete # have the bucket have the same content in the repo & exclude the git related directories.
         
         - name: Invalidate CloudFront Cache # Invalidate the CloudFront Distribution Cache to get contents from the S3 bucket
-          run: aws cloudfront create-invalidation --distribution-id "$CDN_DISTRIBUTION_ID" --paths "/*"
+          run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_DISTRIBUTION_ID }} --paths "/*"

@@ -18,7 +18,7 @@ data_dir: data
 # environment must be set to staging to toggle the edit buttions for prose.io
 environment: staging
 # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-remote_data_prefix: "https://sdgdatabase-dev.itacloudops.org"
+remote_data_prefix: "https://sdg-data-starter-dev.itacloudops.org"
 remote_translations:
   - https://open-sdg.github.io/sdg-translations/translations-2.1.0.json
 
@@ -132,7 +132,7 @@ frontpage_introduction_banner:
 # This controls the text that appears above the goals grid.
 frontpage_goals_grid:
   title: The Sustainable Development Goals
-  description: Click on each [goal](../goals) for data for Sustainable Development Goal global indicators.
+  description: Click on each goal for data for Sustainable Development Goal global indicators. # dynamic linking of goals does not work so leaving as static text, see https://github.com/open-sdg/open-sdg-site-starter/issues/86
 
 # This controls the three-column "cards" that appear below the goals grid.
 frontpage_cards:
