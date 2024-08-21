@@ -48,6 +48,9 @@ jobs:
     environment:
         name: development
         url: https://${{ vars.SITE_DOMAIN_NAME }}
+    permissions: # required for configure-aws-credentials action to work properly
+        id-token: write
+        contents: read
     steps:
         - name: Install AWS CLI
           run: pip3 install awscli --upgrade --user # install the cli with upgrade to any requirements and into the subdir of the user
