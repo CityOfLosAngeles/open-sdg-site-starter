@@ -1,5 +1,8 @@
-# Open SDG - Site starter ![Build and Deploy Development Static Site](https://github.com/CityOfLosAngeles/open-sdg-site-starter/workflows/Build%20and%20Deploy%20Development%20Static%20Site/badge.svg) ![Build and Deploy Production Static Site](https://github.com/CityOfLosAngeles/open-sdg-site-starter/workflows/Build%20and%20Deploy%20Production%20Static%20Site/badge.svg)
+# Open SDG - Site starter
 
+[![Build and Deploy Development Static Site Dev](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployDev.yml/badge.svg)](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployDev.yml)
+
+[![Build and Deploy Production Static Site Prod](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployProd.yml/badge.svg?branch=production)](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployProd.yml)
 
 This is a starter repository to help in implementing the [Open SDG](https://github.com/open-sdg/open-sdg) platform. [See here for documentation](https://open-sdg.readthedocs.io).
 
@@ -17,7 +20,7 @@ You will need to build the SDG Data site first locally in order to proceed with 
 
 4.) In a separate VS Code window have this project opened and navigate to the `_config.yml` file and change `remote_data_prefix:` set to `"http://localhost:9000"`. Remember to revert this change before committing.
 
-5.) Proceed with the steps below after running `bundle check --path=vendor/bundle || bundle install --path=vendor/bundle` to install the necessary dependencies.
+5.) Proceed with the steps below after running `bundle config --local path $PWD/vendor/bundle && bundle install` to install the necessary dependencies.
 
 **Test what development will look like by running the following command:**
 
