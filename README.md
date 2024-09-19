@@ -1,5 +1,8 @@
-# Open SDG - Site starter ![Build and Deploy Development Static Site](https://github.com/CityOfLosAngeles/open-sdg-site-starter/workflows/Build%20and%20Deploy%20Development%20Static%20Site/badge.svg) ![Build and Deploy Production Static Site](https://github.com/CityOfLosAngeles/open-sdg-site-starter/workflows/Build%20and%20Deploy%20Production%20Static%20Site/badge.svg)
+# Open SDG - Site starter
 
+[![Build and Deploy Development Static Site Dev](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployDev.yml/badge.svg)](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployDev.yml)
+
+[![Build and Deploy Production Static Site Prod](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployProd.yml/badge.svg?branch=production)](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployProd.yml)
 
 This is a starter repository to help in implementing the [Open SDG](https://github.com/open-sdg/open-sdg) platform. [See here for documentation](https://open-sdg.readthedocs.io).
 
