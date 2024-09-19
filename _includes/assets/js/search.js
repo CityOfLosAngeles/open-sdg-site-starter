@@ -19,7 +19,7 @@ var indicatorSearch = function(inputElement, indicatorDataStore) {
   this.inputElement.keyup(function(e) {
     var searchValue = that.inputElement.val();
     if(e.keyCode === 13 && searchValue.length) {
-      window.location.replace(that.inputElement.data('pageurl') + searchValue);
+      window.location.replace(that.inputElement.data('pageurl') + encodeURIComponent(searchValue));
     }
   });
 
