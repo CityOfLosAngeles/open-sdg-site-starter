@@ -1,3 +1,5 @@
+# This repository and related assets are no longer being maintained. Archived on 2025/08/05. Please visit the archived site at https://data.sdg.lacity.gov/.
+
 # Open SDG - Site starter
 
 [![Build and Deploy Development Static Site Dev](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployDev.yml/badge.svg)](https://github.com/CityOfLosAngeles/open-sdg-site-starter/actions/workflows/BuildNDeployDev.yml)
